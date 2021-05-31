@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sinabung Impacts</title>
+<!-- 
+Cafe House Template
+http://www.templatemo.com/tm-466-cafe-house
+-->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/templatemo-style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/ori.css" rel="stylesheet">
+  <link rel="shortcut icon" href="img/shortcut.png" type="image/x-icon" />
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+    <!-- End Preloader -->
+
+    <section class="tm-welcome-section">
+      <div class="container tm-position-relative">
+        <div class="tm-lights-container">
+          <img src="img/light.png" alt="Light" class="light light-2">
+        </div>        
+        <div class="row tm-welcome-content">
+          <h2 class="white-text tm-handwriting-font tm-welcome-header"><img src="img/header-line.png" alt="Line" class="tm-header-line">&nbsp;Sinabung Impacts&nbsp;&nbsp;<img src="img/header-line.png" alt="Line" class="tm-header-line"></h2><br>
+          <p class="gray-text tm-welcome-description">An active volcano located in the Karo Plateau, Karo, North Sumatra.</p>
+		  <p>The eruptions began in 2010 until now and are increasingly active, resulting in a number of buildings, areas, and residents exposed to the volcano impact.</p>
+
+            <div class="mobile-menu-icon">
+              <i class="fa fa-bars"></i>
+            </div>
+            <nav class="tm-nav">
+              <ul>
+          <div class="tm-top-header-inner">
+			<li><a href="#0" class="tm-more-button tm-more-button-welcome active">Home</a></li>      
+			<li><a href="ashimpact.html" class="tm-more-button tm-more-button-welcome">Ash Impacts</a></li>
+			<li><a href="volcanoimpact.html" class="tm-more-button tm-more-button-welcome">Volcano Impacts</a></li>
+			<li><a href="dashboard_ashimpact.html" class="tm-more-button tm-more-button-welcome" target="_blank" rel="noopener noreferrer">Go to Dashboard</a></li>
+		  </div>
+              </ul>
+            </nav>  		  
+		</div>
+      </div>      
+    </section>
+	
+    <div class="tm-main-section light-gray-bg">
+      <div class="container" id="main">
+	  
+        <section class="tm-section row">  
+          <div class="col-lg-12 tm-section-header-container">
+            <h2 class="tm-section-header gold-text tm-handwriting-font" style="font-size:20px;"><img src="img/logo.png" width="50" alt="Logo" class="tm-site-logo"> Sinabung in a Glance</h2>
+			<div class="tm-hr-container"><hr class="tm-hr"></div>
+          </div>   
+        </section> 
+
+	<section class="tm-section row">
+		<div id='map'></div>
+		<div class="backto" style="margin-left:17%; margin-top:-1%;">
+		<button id="home-map"><span class="fa fa-home"> Sinabung</span></button>
+		<button id="karo"><span class="fa fa-home"> Karo</span></button>
+		</div>
+	
+            <div class="keterangan">
+              <p style="font-size: 110%; text-align:center;"><em><strong>Information : </strong>  
+			This is an alternative view. Your screen width is too narrow.</em></p><p style="text-align:center;"> Use a wider screen for better view and try again.</p>
+            </div>
+	
+	<div id="Iframe-Map" class="set-margin set-padding set-border set-box-shadow center-block-horiz">
+	  <div class="responsive-wrapper 
+		 responsive-wrapper-wxh-600x480"
+		 style="-webkit-overflow-scrolling: touch; overflow: auto;">
+
+		<iframe src="https://api.mapbox.com/styles/v1/salsarpr/cknjjqog01d7317nkvnr3noxu.html?fresh=true&title=view&access_token=pk.eyJ1Ijoic2Fsc2FycHIiLCJhIjoiY2tpM3VkNDFjMTFyMjJ6bno5NTJoOWpkNiJ9.r1DjWLJOl6FYNMPDQVYCLw"> 
+		  <p style="font-size: 110%;"><em><strong>ERROR: </strong>  
+			An &#105;frame should be displayed here but your browser version does not support &#105;frames. </em>Please update your browser to its most recent version and try again.</p>
+		</iframe>
+	  </div>
+	</div>
+	</section>
+	  
+        <section class="tm-section tm-section-margin-bottom-0 row">
+          <div class="col-lg-12 tm-section-header-container">
+            <h2 class="tm-section-header gold-text tm-handwriting-font"><img src="img/logo.png" width="50" alt="Logo" class="tm-site-logo"> Eruption Overview</h2>
+			<div class="tm-hr-container"><hr class="tm-hr"></div>
+          </div>
+		</section>
+		
+		<section>
+          <div class="time">
+			<div class="line left">
+				<div class="content">
+				<h2 style="font-size:25px; color:#c79c60;"><b>2019</b></h2><p></p>
+                <ul style="margin-left:10px;">
+                  <li><b>June 9<span class="ordinal">th</span></b>
+					<br>The volcanic material bursts were as high as 7 km, and noted as the highest eruption. Hot clouds followed by gliding 3.5 km southeast and 3 km south.</br></li> 
+                </ul>
+				</div>
+			</div>
+			<div class="line right">
+				<div class="content">
+				<h2 style="font-size:25px; color:#c79c60;"><b>2017</b></h2><p></p>
+                <ul style="margin-left:10px;">
+                  <li><b>August 2<span class="ordinal">nd</span></b>
+					<br>The eruption was 4200 m height, followed by the hot clouds glide as ar as 4500 m to the southeast-east.</br></li> 
+                  <li><b>December</b>
+					<br>Hot clouds were spouted as far as 4.6 km.</br></li> 
+				</ul>
+				</div>
+			</div>
+			<div class="line left">
+				<div class="content">
+				<h2 style="font-size:25px; color:#c79c60;"><b>2016</b></h2><p></p>
+                <ul style="margin-left:10px;">
+                  <li><b>May 21<span class="ordinal">st</span></b>
+					<br>The hot clouds affected Gamber village which was only 4 km from the volcano. 7 people were declared dead and 2 suffered burns in the incident.</br></li> 
+                </ul>
+				</div>
+			</div>
+			<div class="line right">
+				<div class="content">
+				<h2 style="font-size:25px; color:#c79c60;"><b>2013</b></h2><p></p>
+                <ul style="margin-left:10px;">
+                  <li><b>November 13<span class="ordinal">th</span></b>
+					<br>The highest ash burst for about 10000 m. The eruption was followed by hot clouds towards the southeast slope as far as 1500 m.</br></li> 
+                </ul>
+				</div>
+			</div>
+			<div class="line left">
+				<div class="content">
+				<h2 style="font-size:25px; color:#c79c60;"><b>2010</b></h2><p></p>
+                <ul style="margin-left:10px;">
+                  <li><b>August 27<span class="ordinal">th</span></b>
+					<br>The first eruption. Volcanic ash spread from the east to the southeast side of the volcano, cover up Sukameriah village, Gungpitu, Sigarang-garang, Sukadebi, and Susuk.</br></li> 
+                  <li><b>September 7<span class="ordinal">th</span></b>
+					<br>The volcanic ash was spat up to 5000 m in the air. The explosion was heard up to 8 km away.</br></li>
+                </ul>
+				</div>
+			</div>
+		  </div>  
+			<a href="https://www.karokab.go.id/id/g-sinabung/laporan-aktivitas-gunungapi" class="tm-more-button ridmor">Read More</a>
+        </section>
+		
+
+        <section class="tm-section row">
+          <div class="col-lg-12 tm-section-header-container">
+            <h2 class="tm-section-header gold-text tm-handwriting-font"><img src="img/logo.png" width="50" alt="Logo" class="tm-site-logo"> More of Sinabung</h2>
+			<div class="tm-hr-container"><hr class="tm-hr"></div>
+          </div>
+          <div class="col-lg-12 tm-popular-items-container">
+            <div class="tm-popular-item">
+              <img src="img/popular-1.jpg" alt="Popular" class="tm-popular-item-img">
+              <div class="tm-popular-item-description">
+                <hr class="tm-popular-item-hr">
+                <p>BNPB (Badan Nasional Penanggulangan Bencana) or Indonesian National Board for Disaster Management, the Indonesian board for natural disaster affairs.</p>
+                <div class="order-now-container">
+                  <a href="https://www.bnpb.go.id/cari?q=sinabung" class="order-now-link tm-handwriting-font">Click Here</a>
+                </div>
+              </div>              
+            </div>
+            <div class="tm-popular-item">
+              <img src="img/popular-2.jpg" alt="Popular" class="tm-popular-item-img" style="margin-left:75px; margin-top:20px; margin-bottom:13px; height:150px;">
+              <div class="tm-popular-item-description">
+                <hr class="tm-popular-item-hr">
+                <p>PVMBG (Pusat Vulkanologi dan Mitigasi Bencana Geologi) or Centre of Volcanology and Geological Hazard Mitigation.</p>
+                <div class="order-now-container">
+                  <a href="https://vsi.esdm.go.id/index.php/gunungapi/data-dasar-gunungapi/231-g-sinabun?start=4" class="order-now-link tm-handwriting-font">Click Here</a>
+                </div>
+              </div>              
+            </div>
+            <div class="tm-popular-item">
+              <img src="img/popular-3.jpg" alt="Popular" class="tm-popular-item-img" style="height:150px; margin-left:75px; margin-top:30px; margin-bottom:3px;">
+              <div class="tm-popular-item-description">
+                <hr class="tm-popular-item-hr">
+                <p>Smithsonian Institution's Global Volcanism Program, housed in the Department of Mineral Sciences, National Museum of Natural History.</p>
+                <div class="order-now-container">
+                  <a href="https://volcano.si.edu/volcano.cfm?vn=261080" class="order-now-link tm-handwriting-font">Click Here</a>
+                </div>
+              </div>              
+            </div>
+          </div>          
+        </section>		
+		
+      </div>
+    </div> 
+
+    <footer>
+      <div class="tm-black-bg">
+        <div class="container">
+          <div class="row margin-bottom-60">
+              <p style="padding-left:35%;">Contact me for further information.</p>
+              <div class="tm-social-icons-container" style="padding-left:35%;">
+                <a href="mailto:salsabila.tk@mail.ugm.ac.id" class="tm-social-icon"><i class="fa fa-envelope"></i></a>
+                <a href="http://instagram.com/aslasrp" class="tm-social-icon"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/salsabila-prasetya/" class="tm-social-icon"><i class="fa fa-linkedin"></i></a>
+                <a href="https://github.com/salsablrp" class="tm-social-icon"><i class="fa fa-github"></i></a>
+            </div>
+          </div>          
+        </div>  
+      </div>  
+	  
+      <div>
+        <div class="container">
+          <div class="row tm-copyright">
+           <p class="col-lg-12 small copyright-text text-center">Copyright &copy; 2021 Salsabila R Prasetya, adopted from Your Cafe House Template</p>
+         </div>  
+       </div>
+     </div>
+   </footer> <!-- Footer content-->  
+   <!-- JS -->
+   
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1Ijoic2Fsc2FycHIiLCJhIjoiY2tpM3VkNDFjMTFyMjJ6bno5NTJoOWpkNiJ9.r1DjWLJOl6FYNMPDQVYCLw';
+
+  var centerPoint = [112.569668, 4.689139]
+  var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/salsarpr/cknjjqog01d7317nkvnr3noxu', // stylesheet location
+    center: centerPoint, // starting position [lng, lat]
+    zoom: 3.20,
+    bearing: 0,
+    pitch: 0,
+    });
+    
+    map.on('load', function() {
+
+	map.addControl(new mapboxgl.NavigationControl());
+
+    var filterHazard = ['!=', ['string', ['get', 'hazard_class']], 'placeholder'];
+
+	// add a sky layer that will show when the map is highly pitched
+	map.addLayer({
+		'id': 'sky',
+		'type': 'sky',
+		'paint': {
+		'sky-type': 'atmosphere',
+		'sky-atmosphere-sun': [0.0, 0.0],
+		'sky-atmosphere-sun-intensity': 15
+		}
+	});
+  });
+  
+      document.getElementById("home-map").addEventListener("click", function() {
+        map.flyTo({
+        center: [98.389385, 3.168628],
+		zoom: 13.25,
+		bearing: 0,
+		pitch: 0,
+        essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+      });
+	  
+      document.getElementById("karo").addEventListener("click", function() {
+        map.flyTo({
+        center: [98.211474, 3.143023],
+		zoom: 9.3,
+		bearing: 0,
+		pitch: 0,
+        essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+      });
+	  
+	var popup = new mapboxgl.Popup({ closeOnClick: true })
+	.setLngLat([98.389385, 3.168628])
+	.setHTML('<b>Sinabung Mountain</b><p></p>Sinabung volcano is a cone-shaped stratovolcano, with a peak height of 2460 m above sea level.<p></p>It is administratively included in Karo, North Sumatra Province, and geographically is located at the position of 3&deg;10 North Latitude and 98&deg;23.5 East Longitude.')
+	.addTo(map);
+ </script> 
+
+   <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+   <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+
+ </body>
+ </html>

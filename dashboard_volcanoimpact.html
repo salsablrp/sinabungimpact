@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sinabung Volcano Impact</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link rel="shortcut icon" href="img/shortcut.png" type="image/x-icon" />
+  <link rel="stylesheet" href="css/dashboard.css">                              
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://code.jquery.com/jquery-1.10.2.js'></script>
+  <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+  <script type="text/javascript" src="js/templatemo-script.js"></script>
+  <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.8.0.min.js"></script>
+</head>
+
+<body>
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+
+  <div class="container">
+    <div id='map'></div>
+		<div class='left-map-top map-overlay map-overlay-inner'>
+			<button id= "home-map" style="border-radius:2px; cursor: pointer;" class="fa fa-home"> Sinabung</button>
+        </div>
+		
+<div class="header">
+<a href="index.html" class="previous">  Home</a>
+<a href="dashboard_ashimpact.html" class="previous next">Ash Impact Dashboard </a>
+</div>
+
+        <div class='btn-group'>
+			<button id = "naman" onclick="Koridor1() ">NAMANTERAN</button>
+            <button id = "simpang" onclick="Koridor2()">SIMPANG EMPAT</button>
+            <button id = "kuta" onclick="Koridor3()">KUTABULUH</button>
+            <button id = "tigander" onclick="Koridor4()">TIGANDERKET</button>
+            <button id = "payung" onclick="Koridor5()">PAYUNG</button>
+            <button id = "munte" onclick="Koridor6()">MUNTE</button>
+            <button id = "tigabin" onclick="Koridor7()">TIGABINANGA</button>
+			<div id="tableauViz"></div>
+		</div>
+</div>
+
+<script>
+
+  var options = {
+    // Show the tabs
+    width: "100%", //width: placeholderDiv.offsetWidth,
+    height: "100%",
+    hideTabs: true,
+    // Aync so supply callback for when viz is fully rendered
+    onFirstInteractive: function() {
+      workbook = viz.getWorkbook();
+    }
+  }
+var url = "https://public.tableau.com/views/SinabungVolcanoImpacts/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link";
+// Create a View
+var placeholderDiv = document.getElementById("tableauViz");
+viz = new tableau.Viz(placeholderDiv, url, options);
+
+function filterSingleValue(filters) {
+    var dashboard, activeSheet, district, structure, road, landcover, rates, percent, pop18, pop20;
+    workbook.activateSheetAsync("Dashboard1")
+    .then(function (sheet) {
+      dashboard = sheet;
+	  district = dashboard.getWorksheets().get("District");
+	  structure = dashboard.getWorksheets().get("StructuresImpact");
+	  road = dashboard.getWorksheets().get("RoadImpact");
+	  landcover = dashboard.getWorksheets().get("LandcoverImpact");
+	  rates = dashboard.getWorksheets().get("LandcoverRates");
+	  percent = dashboard.getWorksheets().get("Percentage");
+	  pop18 = dashboard.getWorksheets().get("WorldPop2018-2019");
+	  pop20 = dashboard.getWorksheets().get("WorldPop2020");
+      district.applyFilterAsync("hazard_class", filters.value, tableauSoftware.FilterUpdateType.REPLACE);
+      structure.applyFilterAsync("Hazard Class", filters.value, tableauSoftware.FilterUpdateType.REPLACE);
+	  road.applyFilterAsync("hazard_class", filters.value, tableauSoftware.FilterUpdateType.REPLACE);
+	  landcover.applyFilterAsync("hazard_class", filters.value, tableauSoftware.FilterUpdateType.REPLACE);
+	  percent.applyFilterAsync("hazard_class", filters.value, tableauSoftware.FilterUpdateType.REPLACE);
+	  pop18.applyFilterAsync("hazard_class", filters.value, tableauSoftware.FilterUpdateType.REPLACE);
+	  pop20.applyFilterAsync("hazard_class", filters.value, tableauSoftware.FilterUpdateType.REPLACE);
+	  return rates.applyFilterAsync("hazard_class", filters.value, tableauSoftware.FilterUpdateType.REPLACE);
+      })
+  }
+  function clearFilter() {
+      var dashboard, activeSheet, korSheet, halSheet, hourSheet;
+      workbook.activateSheetAsync("asd")
+      .then(function (sheet) {
+        dashboard = sheet;
+        korSheet = dashboard.getWorksheets().get("1Koridor");
+        halSheet = dashboard.getWorksheets().get("1Halte");
+        hourSheet = dashboard.getWorksheets().get("1hourly");
+        daySheet = dashboard.getWorksheets().get("1daily");
+        korSheet.clearFilterAsync("Koridor");
+        korSheet.clearFilterAsync("Hari");
+        halSheet.clearFilterAsync("Hari");
+        daySheet.clearFilterAsync("Koridor");
+        hourSheet.clearFilterAsync("Koridor");
+        return hourSheet.clearFilterAsync("Hari");
+        })
+    }
+  function Koridor1() {
+      var dashboard, activeSheet, korSheet, halSheet, hourSheet;
+      workbook.activateSheetAsync("asd")
+      .then(function (sheet) {
+        dashboard = sheet;
+        korSheet = dashboard.getWorksheets().get("1Koridor");
+        halSheet = dashboard.getWorksheets().get("1Halte");
+        hourSheet = dashboard.getWorksheets().get("1hourly");
+        daySheet = dashboard.getWorksheets().get("1daily");
+        korSheet.applyFilterAsync("Koridor", "1", tableauSoftware.FilterUpdateType.REPLACE);
+        halSheet.applyFilterAsync("Koridor", "1", tableauSoftware.FilterUpdateType.REPLACE);
+        daySheet.applyFilterAsync("Koridor", "1", tableauSoftware.FilterUpdateType.REPLACE);
+        return hourSheet.applyFilterAsync("Koridor", "1", tableauSoftware.FilterUpdateType.REPLACE);
+        })
+    }
+    function Koridor2() {
+        var dashboard, activeSheet, korSheet, halSheet, hourSheet;
+        workbook.activateSheetAsync("asd")
+        .then(function (sheet) {
+          dashboard = sheet;
+          korSheet = dashboard.getWorksheets().get("1Koridor");
+          halSheet = dashboard.getWorksheets().get("1Halte");
+          hourSheet = dashboard.getWorksheets().get("1hourly");
+          daySheet = dashboard.getWorksheets().get("1daily");
+          daySheet.applyFilterAsync("Koridor", "2", tableauSoftware.FilterUpdateType.REPLACE);
+          korSheet.applyFilterAsync("Koridor", "2", tableauSoftware.FilterUpdateType.REPLACE);
+          halSheet.applyFilterAsync("Koridor", "2", tableauSoftware.FilterUpdateType.REPLACE);
+          return hourSheet.applyFilterAsync("Koridor", "2", tableauSoftware.FilterUpdateType.REPLACE);
+          })
+      }
+      function Koridor3() {
+          var dashboard, activeSheet, korSheet, halSheet, hourSheet;
+          workbook.activateSheetAsync("asd")
+          .then(function (sheet) {
+            dashboard = sheet;
+            korSheet = dashboard.getWorksheets().get("1Koridor");
+            halSheet = dashboard.getWorksheets().get("1Halte");
+            hourSheet = dashboard.getWorksheets().get("1hourly");
+            daySheet = dashboard.getWorksheets().get("1daily");
+            daySheet.applyFilterAsync("Koridor", "3", tableauSoftware.FilterUpdateType.REPLACE);
+            korSheet.applyFilterAsync("Koridor", "3", tableauSoftware.FilterUpdateType.REPLACE);
+            halSheet.applyFilterAsync("Koridor", "3", tableauSoftware.FilterUpdateType.REPLACE);
+            return hourSheet.applyFilterAsync("Koridor", "3", tableauSoftware.FilterUpdateType.REPLACE);
+            })
+        }
+        function Koridor4() {
+            var dashboard, activeSheet, korSheet, halSheet, hourSheet;
+            workbook.activateSheetAsync("asd")
+            .then(function (sheet) {
+              dashboard = sheet;
+              korSheet = dashboard.getWorksheets().get("1Koridor");
+              halSheet = dashboard.getWorksheets().get("1Halte");
+              hourSheet = dashboard.getWorksheets().get("1hourly");
+              daySheet = dashboard.getWorksheets().get("1daily");
+              daySheet.applyFilterAsync("Koridor", "4", tableauSoftware.FilterUpdateType.REPLACE);
+              korSheet.applyFilterAsync("Koridor", "4", tableauSoftware.FilterUpdateType.REPLACE);
+              halSheet.applyFilterAsync("Koridor", "4", tableauSoftware.FilterUpdateType.REPLACE);
+              return hourSheet.applyFilterAsync("Koridor", "4", tableauSoftware.FilterUpdateType.REPLACE);
+              })
+          }
+          function Koridor5() {
+              var dashboard, activeSheet, korSheet, halSheet, hourSheet;
+              workbook.activateSheetAsync("asd")
+              .then(function (sheet) {
+                dashboard = sheet;
+                korSheet = dashboard.getWorksheets().get("1Koridor");
+                halSheet = dashboard.getWorksheets().get("1Halte");
+                hourSheet = dashboard.getWorksheets().get("1hourly");
+                daySheet = dashboard.getWorksheets().get("1daily");
+                daySheet.applyFilterAsync("Koridor", "5", tableauSoftware.FilterUpdateType.REPLACE);
+                korSheet.applyFilterAsync("Koridor", "5", tableauSoftware.FilterUpdateType.REPLACE);
+                halSheet.applyFilterAsync("Koridor", "5", tableauSoftware.FilterUpdateType.REPLACE);
+                return hourSheet.applyFilterAsync("Koridor", "5", tableauSoftware.FilterUpdateType.REPLACE);
+                })
+            }
+            function Koridor6() {
+                var dashboard, activeSheet, korSheet, halSheet, hourSheet;
+                workbook.activateSheetAsync("asd")
+                .then(function (sheet) {
+                  dashboard = sheet;
+                  korSheet = dashboard.getWorksheets().get("1Koridor");
+                  halSheet = dashboard.getWorksheets().get("1Halte");
+                  hourSheet = dashboard.getWorksheets().get("1hourly");
+                  daySheet = dashboard.getWorksheets().get("1daily");
+                  daySheet.applyFilterAsync("Koridor", "6", tableauSoftware.FilterUpdateType.REPLACE);
+                  korSheet.applyFilterAsync("Koridor", "6", tableauSoftware.FilterUpdateType.REPLACE);
+                  halSheet.applyFilterAsync("Koridor", "6", tableauSoftware.FilterUpdateType.REPLACE);
+                  return hourSheet.applyFilterAsync("Koridor", "6", tableauSoftware.FilterUpdateType.REPLACE);
+                  })
+              }
+              function Koridor7() {
+                  var dashboard, activeSheet, korSheet, halSheet, hourSheet;
+                  workbook.activateSheetAsync("asd")
+                  .then(function (sheet) {
+                    dashboard = sheet;
+                    korSheet = dashboard.getWorksheets().get("1Koridor");
+                    halSheet = dashboard.getWorksheets().get("1Halte");
+                    hourSheet = dashboard.getWorksheets().get("1hourly");
+                    daySheet = dashboard.getWorksheets().get("1daily");
+                    daySheet.applyFilterAsync("Koridor", "7", tableauSoftware.FilterUpdateType.REPLACE);
+                    korSheet.applyFilterAsync("Koridor", "7", tableauSoftware.FilterUpdateType.REPLACE);
+                    halSheet.applyFilterAsync("Koridor", "7", tableauSoftware.FilterUpdateType.REPLACE);
+                    return hourSheet.applyFilterAsync("Koridor", "7", tableauSoftware.FilterUpdateType.REPLACE);
+                    })
+                }
+
+    document.getElementById("naman").addEventListener("click", function() {
+        map.flyTo({
+        center: [98.421276, 3.181195],
+        zoom : 12.5,
+        pitch: 45.5,
+        bearing: 0,
+        essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+      });
+    document.getElementById("simpang").addEventListener("click", function() {
+        map.flyTo({
+        center: [98.443041, 3.124557],
+        zoom : 12.5,
+        pitch: 45.5,
+        bearing: 0,
+        essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+      });
+      document.getElementById("kuta").addEventListener("click", function() {
+        map.flyTo({
+          center: [98.227809, 3.192198],
+        zoom : 12.5,
+        pitch: 45.5,
+        bearing: 0,
+          essential: true // this animation is considered essential with respect to prefers-reduced-motion
+          });
+        });
+      document.getElementById("tigander").addEventListener("click", function() {
+        map.flyTo({
+        center: [98.333664, 3.181862],
+        zoom : 12.5,
+        pitch: 45.5,
+        bearing: 0,
+        essential: true // this animation is considered essential with respect to prefers-reduced-motion
+          });
+        });
+      document.getElementById("payung").addEventListener("click", function() {
+        map.flyTo({
+        center: [98.375148, 3.128288],
+        zoom : 12.5,
+        pitch: 45.5,
+        bearing: 0,
+        essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+      });
+      document.getElementById("munte").addEventListener("click", function() {
+        map.flyTo({
+        center: [98.378049, 3.060088],
+        zoom : 12.5,
+        pitch: 45.5,
+        bearing: 0,
+        essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+      });
+      document.getElementById("tigabin").addEventListener("click", function() {
+        map.flyTo({
+        center: [98.216703, 3.061688],
+        zoom : 12.5,
+        pitch: 45.5,
+        bearing: 0,
+        essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+      });
+      document.getElementById("home-map").addEventListener("click", function() {
+        map.flyTo({
+        center: [98.390681, 3.151028],
+		zoom: 13.43,
+		bearing: 0,
+		pitch: 77.00,
+        essential: true // this animation is considered essential with respect to prefers-reduced-motion
+        });
+      });
+
+  mapboxgl.accessToken = 'pk.eyJ1Ijoic2Fsc2FycHIiLCJhIjoiY2tpM3VkNDFjMTFyMjJ6bno5NTJoOWpkNiJ9.r1DjWLJOl6FYNMPDQVYCLw';
+
+  var bounds = [
+  [98.0877628069917,2.824589546367753],
+  [98.64407467971423,3.474828775823416]
+  ];
+
+  var centerPoint = [98.390681, 3.151028]
+  var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/salsarpr/ckokhvqju0tq817pct0lnul4t', // stylesheet location
+    center: centerPoint, // starting position [lng, lat]
+    zoom: 13.43,
+    bearing: 0,
+    pitch: 77.00,
+	maxBounds: bounds
+    });
+    
+    map.on('load', function() {
+
+	map.addControl(new mapboxgl.NavigationControl());
+
+    var filterHazard = ['!=', ['string', ['get', 'hazard_class']], 'placeholder'];
+
+	// add a sky layer that will show when the map is highly pitched
+	map.addLayer({
+		'id': 'sky',
+		'type': 'sky',
+		'paint': {
+		'sky-type': 'atmosphere',
+		'sky-atmosphere-sun': [0.0, 0.0],
+		'sky-atmosphere-sun-intensity': 15
+		}
+	});
+  });
+  
+  //popup
+  map.on('click', 'map', function (e) {
+    new mapboxgl.Popup({ offset: 25 })
+    .setLngLat(e.lngLat)
+    .setHTML('<h3><b>' +
+        e.features[0].properties.Halte + '</b></h3>Okupansi: <b>' +
+        e.features[0].properties.Okupansi + '</b></h3>')
+    .addTo(map);
+  });
+
+  // Change the cursor to a pointer when the mouse is over the states layer.
+    map.on('mouseenter', 'map', function () {
+    map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'map', function () {
+    map.getCanvas().style.cursor = '';
+    });
+
+
+
+</script>
+
+</body>
+</html>
